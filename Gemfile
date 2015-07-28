@@ -19,8 +19,9 @@ gem "paperclip", '~> 4.3'
 # use haml as template language
 gem 'haml-rails'
 # use simpleform form creator
-gem 'simple_form'
-
+gem 'simple_form', '~> 3.1.0'
+# use bootstrap 
+gem 'bootstrap-sass', '~> 3.3.5'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
