@@ -13,6 +13,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
+# use Devise for user management
+gem 'devise'
 
 # use paperclip file upload gem 
 gem "paperclip", '~> 4.3'

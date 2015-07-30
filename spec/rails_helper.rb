@@ -27,6 +27,18 @@ require 'capybara/rails'
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+#add module for logging in
+module AuthHelpers
+  def sign_in_with (user)
+    visit '/'
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    click_button "Log in"
+    
+  end
+  
+end
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -38,6 +50,9 @@ RSpec.configure do |config|
   
   # Added FactoryGirl to the config
   config.include FactoryGirl::Syntax::Methods
+  
+  # added AuthHelpers module to rspec
+  config.include AuthHelpers, type: :feature
   
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

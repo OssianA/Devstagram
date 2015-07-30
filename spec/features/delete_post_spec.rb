@@ -2,10 +2,13 @@ require 'rails_helper'
 
 feature 'Create a post, edit and destroy it' do
   background do
-    job_one = create(:post, caption: "Abs for days")
-    visit '/'
-    find(:xpath, "//a[contains(@href,'posts/1')]").click
-    click_link "Edit Post"
+    
+       user_one = create(:user)
+       sign_in_with user_one
+        job_one = create(:post, caption: "Abs for days", user_id: user_one.id)
+        visit '/'
+        find(:xpath, "//a[contains(@href,'posts/1')]").click
+        click_link "Edit Post"
   end
   it 'clicking the delete and confirm' do
     click_link "Delete Post"

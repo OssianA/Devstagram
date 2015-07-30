@@ -2,7 +2,7 @@
   .post
     .post-head
       .name
-        Ehsan asgari
+        = @post.user.username
     .image.center-block
       =image_tag @post.image.url(:medium)
     %p.caption
