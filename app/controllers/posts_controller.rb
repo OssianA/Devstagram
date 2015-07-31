@@ -62,8 +62,8 @@ end
   end
   
   def set_post
-    @post = Post.find(params[:id])
     
+       @post = Post.find(params[:id])
   end
   
   def check_owner
