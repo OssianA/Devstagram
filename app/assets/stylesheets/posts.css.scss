@@ -93,6 +93,18 @@ body {
       color: #515151;
     }
   }
+  
+  #comment {
+    margin-top: 7px;
+    .user-name {
+      font-weight: 500;
+      margin-right: 0.3em;
+    }
+    .delete-comment {
+      float: right;
+      color: #515151;
+    }
+  }
   margin-bottom: 7px;
   padding-top: 24px;
   padding-left: 24px;

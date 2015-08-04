@@ -7,8 +7,10 @@ def create
   @comment.user_id = current_user.id
   
   if @comment.save
-    flash[:success] = "You have created a new comment"
-    redirect_to :back
+    respond_to do |format|
+      format.html {redirect_to root_path}
+      format.js
+    end
   else
     flash.now[:alert] = " check the comment form, something went wrong."
     render root_path
@@ -18,9 +20,13 @@ end
   
 def destroy
   @comment = @post.comments.find(params[:id])
-  @comment.destroy
-  flash[:success] = "comment destroyed!"
-  redirect_to root_path
+  if @comment.user == current_user
+    @comment.destroy
+    respond_to do |format|
+      format.html {redirect_to root_path}
+      format.js
+    end
+  end
   
 end
   
