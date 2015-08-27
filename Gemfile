@@ -15,7 +15,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 # use Devise for user management
 gem 'devise'
-
+# use kaminari for pagination
+gem 'kaminari', '~> 0.16.3'
 # use paperclip file upload gem 
 gem "paperclip", '~> 4.3'
 # use haml as template language
