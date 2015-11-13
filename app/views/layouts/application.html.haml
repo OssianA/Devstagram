@@ -1,16 +1,18 @@
-!!!
+!!! 5
 %html
   %head
     %title Devstagram
+    %meta{:charset => "utf-8"}
+    %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge"}
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
 
   %body
     = render 'layouts/navigation'
-    .container
-      -flash.each do |name, msg|
-        = content_tag :div, msg, class: [:alert, alert_for(name)]
+    -flash.each do |name, msg|
+      .container
+      = content_tag :div, msg, class: [:alert, alert_for(name)]
     = yield
    
 
