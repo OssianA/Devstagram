@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731121817) do
+ActiveRecord::Schema.define(version: 20151117103018) do
 
   create_table "comments", force: true do |t|
     t.string   "content"
@@ -24,6 +24,23 @@ ActiveRecord::Schema.define(version: 20150731121817) do
   add_index "comments", ["post_id"], name: "index_comments_on_post_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
+  create_table "invoices", force: true do |t|
+    t.date     "faldat"
+    t.date     "fakdat"
+    t.decimal  "belopp",     precision: 16, scale: 2
+    t.string   "OCR"
+    t.boolean  "paid",                                default: false
+    t.integer  "created_by"
+    t.integer  "user_id"
+    t.date     "approved"
+    t.integer  "status",                              default: 1
+    t.integer  "invotype",                            default: 1
+    t.date     "accounted"
+    t.string   "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "posts", force: true do |t|
     t.string   "caption"
     t.datetime "created_at"
@@ -33,6 +50,7 @@ ActiveRecord::Schema.define(version: 20150731121817) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "user_id"
+    t.string   "post_image_id"
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
@@ -51,6 +69,11 @@ ActiveRecord::Schema.define(version: 20150731121817) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.text     "bio"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
