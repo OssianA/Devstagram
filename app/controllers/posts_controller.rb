@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :like]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :like, :unlike]
   before_action :authenticate_user!
   before_action :check_owner, only: [:edit, :update, :destroy ]
   def index
@@ -25,13 +25,9 @@ class PostsController < ApplicationController
   end
   
   def show
-   
-    
   end
 
   def edit
-   
-    
   end
 
   def update
@@ -59,6 +55,16 @@ class PostsController < ApplicationController
         format.js
       end
     end
+    
+  end
+  
+    def unlike
+      if @post.unliked_by current_user
+        respond_to do |format|
+          format.html {redirect_to :back}
+          format.js
+        end
+      end
     
   end
 
